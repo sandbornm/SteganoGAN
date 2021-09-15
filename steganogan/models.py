@@ -324,7 +324,7 @@ class SteganoGAN(object):
         # split and decode messages
         candidates = Counter()
         bits = image.data.cpu().numpy().tolist()
-        for candidate in bits_to_bytearray(bits).split(b'\x00\x00\x00\x00'):
+        for candidate in tqdm(bits_to_bytearray(bits).split(b'\x00\x00\x00\x00')):
             candidate = bytearray_to_text(bytearray(candidate))
             if candidate:
                 candidates[candidate] += 1

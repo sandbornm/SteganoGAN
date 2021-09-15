@@ -34,6 +34,7 @@ def bytearray_to_bits(x):
 def bits_to_bytearray(bits):
     """Convert a list of bits to a bytearray"""
     ints = []
+    bits = [0 if b == False else 1 for b in bits] # decode bool
     for b in range(len(bits) // 8):
         byte = bits[b * 8:(b + 1) * 8]
         ints.append(int(''.join([str(bit) for bit in byte]), 2))
